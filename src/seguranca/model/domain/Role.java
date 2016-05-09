@@ -25,7 +25,7 @@ public class Role implements Serializable {
 	@Column(name="CD_ROLE")
 	private Integer codigo;
 	
-	@Column(name="NM_NOME", length=60)
+	@Column(name="NM_NOME", length=60,unique=true)
 	private String nome;
 	
 	@ManyToMany
