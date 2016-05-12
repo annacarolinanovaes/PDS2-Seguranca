@@ -10,29 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="TB_SISTEMA")
-public class Sistema  implements Serializable{
+public class Sistema implements Serializable {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
+	@XmlTransient
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CD_SISTEMA", length=40)
+	@Column(name="CD_SISTEMA")
 	private Integer codigo;
 	
-	@Column(name="NM_SISTEMA", nullable=false, length=100)
+	@Column(name="NM_SISTEMA",nullable=false,length=100)
 	private String nome;
 	
-	@Column(name="DS_URL", nullable=false, length=255)
+	@Column(name="DS_URL",length=255,nullable=false)
 	private String url;
 	
+	@XmlTransient
 	@OneToMany(mappedBy="sistema")
 	private List<Role> roles;
-	
 
-	public Sistema(Integer codigo, String nome, String url) {
+	public Sistema() {
 		super();
 	}
 
@@ -58,6 +63,14 @@ public class Sistema  implements Serializable{
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override
@@ -87,4 +100,6 @@ public class Sistema  implements Serializable{
 	
 	
 	
+	
+
 }

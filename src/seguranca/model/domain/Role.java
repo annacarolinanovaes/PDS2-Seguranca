@@ -18,28 +18,31 @@ import javax.persistence.Table;
 @Table(name="TB_ROLE")
 public class Role implements Serializable {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="CD_ROLE")
 	private Integer codigo;
 	
-	@Column(name="NM_NOME", length=60,unique=true)
+	@Column(name="NM_ROLE",length=60,unique=true)
 	private String nome;
 	
 	@ManyToMany
-	@JoinTable(name="TB_USUARIO_ROLE", 
-				joinColumns=@JoinColumn(name="CD_ROLE"),
-				inverseJoinColumns=@JoinColumn(name="DS_LOGIN"))
+	@JoinTable(name="TB_USUARIO_ROLE",
+					joinColumns=@JoinColumn(name="CD_ROLE"),
+					inverseJoinColumns=@JoinColumn(name="DS_LOGIN")
+			  )
 	private List<Usuario> usuarios;
 	
 	@ManyToOne
-	@JoinColumn(name="CD_SISTEMA", referencedColumnName="CD_SISTEMA")
+	@JoinColumn(name="CD_SISTEMA",referencedColumnName="CD_SISTEMA")
 	private Sistema sistema;
-	
-	
-	public Role(Integer codigo, String nome) {
+
+	public Role() {
 		super();
 	}
 
@@ -57,6 +60,22 @@ public class Role implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public Sistema getSistema() {
+		return sistema;
+	}
+
+	public void setSistema(Sistema sistema) {
+		this.sistema = sistema;
 	}
 
 	@Override
@@ -85,4 +104,7 @@ public class Role implements Serializable {
 	}
 	
 	
+	
+	
+
 }
