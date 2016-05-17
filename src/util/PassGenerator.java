@@ -7,6 +7,6 @@ public class PassGenerator {
 		Base64Encoder.main(new String[] {"123", "SHA-256"});
 		
 		//110579=[/zKgZ8BMR5lI8adFc59hCw5vFhyawXhQ0RKOUSlW7zE=]
-		//123=[A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=]	
+		//123=[pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=]	
 	}
 }
